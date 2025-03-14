@@ -1,24 +1,18 @@
-const mysql = require('mysql2')
+const mysql = require('mysql2');
+require('dotenv').config()
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-})
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+});
 
-db.query("CREATE DATABASE IF NOT EXISTS Auth", (err, result) => {
-    if(err) {
-        console.error("Erreur lors de la création de la base :", err)
-    } else {
-        console.error("Base de données prête! ")
+db.connect((err) => {
+    if (err) {
+        console.error("Erreur de connexion à MySQL :", err);
+        return;
     }
-})
+    console.log("Connexion à MySQL réussie!");
+});
 
-const dbConnect = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'Auth'
-})
-
-module.exports = dbConnect;
+module.exports = db;
