@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "node -r module-alias/register app.js",
+    "dev": "nodemon -r module-alias/register app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.2",
     "module-alias": "^2.2.3",
     "nodemon": "^3.1.9",
+    "openai": "^4.87.3",
     "prisma": "^6.5.0"
   },
   "_moduleAliases": {
